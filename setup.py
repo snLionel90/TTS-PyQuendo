@@ -11,15 +11,15 @@ setup(
 
     author = 'sn.Lionel90 aka Lionel Sanchez',
     url = 'https://github.com/snLionel90/',
-    download_url = 'https://github.com/snLionel90/TTS-PyQuendo',
+    download_url = 'https://github.com/snLionel90/PyQuendo',
 
     keywords=['locuendo', 'snLionel90', 'voice', 'txt'],
     classifiers=[],
     install_requires=[
         'PyQt5',
         'pillow',
-        'mpg123',
-        'tts'
+        'pyttsx3',
+        'speech_recognition'
     ],
     include_package_data=True, 
 )

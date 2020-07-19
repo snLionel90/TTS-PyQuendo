@@ -2,12 +2,17 @@ import sys
 import os
 import pyttsx3
 import speech_recognition as sr
+
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtWidgets import QLabel, QPushButton, QWidget,QTextEdit, QLineEdit, QFileDialog,QApplication, QTabWidget,QCheckBox
+from tkinter import filedialog
 
 FONT = QFont ( "Calibri", 20 , weight = 75) #constante de la fuente a nivel de clase 
 FONT.setBold(True)
+
+FONT2 = QFont("Calibri", 12, weight = 75)
+FONT2.setBold(False)
 
 class Window (QTabWidget): #clase ventana principal
     def __init__(self):  #funcion de inicializacion de la bentana 
@@ -18,18 +23,30 @@ class Window (QTabWidget): #clase ventana principal
         self.addTab(TextTab(), ' Texto') #pestaña 1
         #self.addTab(VoiceTab(), ' Voz')
         
-
 class TextTab(QWidget):
     def __init__(self):
         super().__init__() #llamada de la funcion anterior
-        boton_aceptar = QPushButton('aceptar', self) #inicializacion del boton
-        boton_aceptar.setGeometry(QRect(310,260,85,27)) #posicion y tamaño del boton
-        boton_aceptar.clicked.connect(self.callTextovoz) #evento de boton aceptar
+        boton_leer = QPushButton('Leer', self) #inicializacion del boton
+        boton_leer.setGeometry(QRect(240,260,85,27)) #posicion y tamaño del boton
+        boton_leer.clicked.connect(self.callTextovoz) #evento de boton aceptar
 
-        self.textArea = QTextEdit('Escribe el texto aqui ', self) #inicializacion del area de texto
+        boton_guardar = QPushButton('guardar como..', self) #inicializacion del boton
+        boton_guardar.setGeometry(QRect(50,260,85,27)) #posicion y tamaño del boton
+        boton_guardar.clicked.connect(self.guardar) #llamando a la funcion de fuardar fichero
+
+        boton_salir = QPushButton('Salir', self) #inicializacion del boton
+        boton_salir.setGeometry(QRect(150,260,85,27)) #posicion y tamaño del boton
+        boton_salir.clicked.connect(self.salir) #llamando a la funcion de fuardar fichero
+
+        self.textArea = QTextEdit('  ', self) #inicializacion del area de texto
         self.textArea.setGeometry(QRect(20,70,371,181)) #posicion y tamaño del arera
 
-        label = QLabel("Texto a Voz" ,self) #titulo de la pestaña
+        labelIntro = QLabel("Escriba el texto para traducir a voz", self)
+        labelIntro.setGeometry(QRect(60,10, 301, 80))
+        labelIntro.setFont(FONT2)
+        labelIntro.setAlignment(Qt.AlignCenter)
+
+        label = QLabel("PyQuendo ©Sn.Lionel90" ,self) #titulo de la pestaña
         label.setGeometry(QRect(60,10, 301,31)) #tamaño y posicion de la pestalña
         label.setFont(FONT) #obtengo la fuente de la variable
         label.setAlignment(Qt.AlignCenter)
@@ -37,8 +54,18 @@ class TextTab(QWidget):
     def callTextovoz(self): #llamando a la funcion del evento del boton aceptar
         texto = self.textArea.toPlainText() # a texo plano 
         funcionTextToVoice(texto) #llamada a la funcion de traduccion 
+    
+    def salir(self):
+        exit(0)
+    
+    def guardar(self): #funcion de guardar el fichero
+        directorio = filedialog.asksaveasfile()
+        
 
-def funcionTextToVoice(texto):
+        
+
+
+def funcionTextToVoice(texto): #funcion de traduccion
     """"
     parametros: texto -->str
     Texto traduciodo a  voz
