@@ -11,7 +11,7 @@ setup(
 
     author = 'sn.Lionel90 aka Lionel Sanchez',
     url = 'https://github.com/snLionel90/',
-    download_url = 'https://github.com/snLionel90/PyQuendo',
+    download_url = 'https://github.com/snLionel90/TTS-PyQuendo',
 
     keywords=['locuendo', 'snLionel90', 'voice', 'txt'],
     classifiers=[],
