@@ -3,10 +3,10 @@ import os
 import pyttsx3
 import speech_recognition as sr
 
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QFont
-from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import Qt, QRect, QFileInfo
 from PyQt5.QtWidgets import QLabel, QPushButton, QWidget,QTextEdit, QLineEdit, QFileDialog,QApplication, QTabWidget,QCheckBox
-from tkinter import filedialog
 
 FONT = QFont ( "Calibri", 20 , weight = 75) #constante de la fuente a nivel de clase 
 FONT.setBold(True)
@@ -20,23 +20,20 @@ class Window (QTabWidget): #clase ventana principal
         self.setMaximumSize(440,350) #tamaño maximo
         self.setMinimumSize(440,350) #tamaño minimo
         self.setWindowTitle('TTS, Texto to Speech PyQuendo') #texto de cabecera (titulo)
-        self.addTab(TextTab(), ' Texto') #pestaña 1
-        #self.addTab(VoiceTab(), ' Voz')
-        
-class TextTab(QWidget):
+        self.addTab(TextToVoiceTab(), ' Text to Voice') #pestaña 1
+        self.addTab(VoiceToTextTab(),'Voice to Text')
+        self.addTab(AboutTab(),'About')
+
+class TextToVoiceTab(QWidget):
     def __init__(self):
         super().__init__() #llamada de la funcion anterior
         boton_leer = QPushButton('Leer', self) #inicializacion del boton
-        boton_leer.setGeometry(QRect(240,260,85,27)) #posicion y tamaño del boton
+        boton_leer.setGeometry(QRect(150,260,85,27)) #posicion y tamaño del boton
         boton_leer.clicked.connect(self.callTextovoz) #evento de boton aceptar
 
-        boton_guardar = QPushButton('guardar como..', self) #inicializacion del boton
-        boton_guardar.setGeometry(QRect(50,260,85,27)) #posicion y tamaño del boton
-        boton_guardar.clicked.connect(self.guardar) #llamando a la funcion de fuardar fichero
-
         boton_salir = QPushButton('Salir', self) #inicializacion del boton
-        boton_salir.setGeometry(QRect(150,260,85,27)) #posicion y tamaño del boton
-        boton_salir.clicked.connect(self.salir) #llamando a la funcion de fuardar fichero
+        boton_salir.setGeometry(QRect(60,260,85,27)) #posicion y tamaño del boton
+        boton_salir.clicked.connect(self.salir) #llamando a la funcion de salir
 
         self.textArea = QTextEdit('  ', self) #inicializacion del area de texto
         self.textArea.setGeometry(QRect(20,70,371,181)) #posicion y tamaño del arera
@@ -57,12 +54,37 @@ class TextTab(QWidget):
     
     def salir(self):
         exit(0)
-    
-    def guardar(self): #funcion de guardar el fichero
-        directorio = filedialog.asksaveasfile()
-        
 
-        
+class VoiceToTextTab(QWidget):
+    def __init__(self):
+        super().__init__() #llamada de la funcion anterior
+        boton_Abrir = QPushButton('Abrir fichero', self) #inicializacion del boton
+        boton_Abrir.setGeometry(QRect(60,260,85,27)) #posicion y tamaño del boton
+        boton_Abrir.clicked.connect(self.Abrir) #llamando a la funcion de salir
+
+        boton_salir = QPushButton('Salir', self) #inicializacion del boton
+        boton_salir.setGeometry(QRect(150,260,85,27)) #posicion y tamaño del boton
+        boton_salir.clicked.connect(self.salir) #llamando a la funcion de salir
+
+        labelIntro = QLabel("Abrir audio para leer su contenido", self)
+        labelIntro.setGeometry(QRect(60,10, 301, 80))
+        labelIntro.setFont(FONT2)
+        labelIntro.setAlignment(Qt.AlignCenter)
+
+        label = QLabel("PyQuendo ©Sn.Lionel90" ,self) #titulo de la pestaña
+        label.setGeometry(QRect(60,10, 301,31)) #tamaño y posicion de la pestalña
+        label.setFont(FONT) #obtengo la fuente de la variable
+        label.setAlignment(Qt.AlignCenter)
+
+    def Abrir(self):
+       print ('ola qkhe ase')
+
+    def salir(self):
+        exit(0)
+
+class AboutTab(QWidget):
+    def __init__(self):
+        super().__init__()
 
 
 def funcionTextToVoice(texto): #funcion de traduccion

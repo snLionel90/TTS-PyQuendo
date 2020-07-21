@@ -3,5 +3,6 @@ py -m pip install PyQt5
 py -m pip install pillow
 py -m pip install pyttsx3
 py -m pip install SpeechRecognition
+py -m pip install gtts
 
 

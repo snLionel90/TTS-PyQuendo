@@ -1,25 +1,25 @@
 #setup / configuracion
 
-from setuptools import setup
+import setuptools
 
-setup(
+with open ("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
     name = 'PyQuendo',
-    packages = ['PyQuendo'],
     version = '1.0.0',
-    description = (
-        "Traduzca a voz todo el texto que escriba"),
-
     author = 'sn.Lionel90 aka Lionel Sanchez',
+    description = ("Traduzca a voz todo el texto que escriba"),
+    long_description=long_description,
+    long_description_content_type="text/markdown", 
     url = 'https://github.com/snLionel90/',
-    download_url = 'https://github.com/snLionel90/PyQuendo',
-
     keywords=['locuendo', 'snLionel90', 'voice', 'txt'],
-    classifiers=[],
-    install_requires=[
-        'PyQt5',
-        'pillow',
-        'pyttsx3',
-        'speech_recognition'
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
     ],
+    python_requires='>=3.6',
     include_package_data=True, 
 )
