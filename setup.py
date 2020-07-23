@@ -12,7 +12,7 @@ setuptools.setup(
     description = ("Traduzca a voz todo el texto que escriba"),
     long_description=long_description,
     long_description_content_type="text/markdown", 
-    url = 'https://github.com/snLionel90/',
+    url = 'https://github.com/snLionel90/TTS-PyQuendo',
     keywords=['locuendo', 'snLionel90', 'voice', 'txt'],
     packages=setuptools.find_packages(),
     classifiers=[
