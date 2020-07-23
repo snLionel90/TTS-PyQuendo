@@ -16,11 +16,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ------------------------------------------------------------------------------------------
 descarge el repositorio con:
-$ git clone https://github.com/snLionel90/TTS-PyQuendo.git 
+<ul><li>$ git clone https://github.com/snLionel90/TTS-PyQuendo.git</li></ul> 
 
 El repositorio contiene el script de configuracion setup.py, ejecutelo con:
-$ cd %nombre directorio descarga% 
-$ python setup.py install
+<ul>
+  <li>$ cd %nombre directorio descarga% </li>
+  <li>$ python setup.py install</li>
+ </ul>
 
 <h2>se requiere de extensiones de; PyQT5, PyAudio, pyttsx3 ,gTTS, SpeechRecognition y pydub para obtener y descargar videos de youtube</h2>
 <ul>
