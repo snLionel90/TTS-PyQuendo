@@ -24,7 +24,7 @@ El repositorio contiene el script de configuracion setup.py, ejecutelo con:
   <li>$ python setup.py install</li>
  </ul>
 
-<h2>se requiere de extensiones de; PyQT5, PyAudio, pyttsx3 ,gTTS, SpeechRecognition y pydub para obtener y descargar videos de youtube</h2>
+<h2>se requiere de extensiones de; PyQT5, PyAudio, pyttsx3 ,gTTS, SpeechRecognition y pydub</h2>
 <ul>
   <li>py -m pip install PyQT5</li> 
   <li>py -m pip install PyAudio</li>
