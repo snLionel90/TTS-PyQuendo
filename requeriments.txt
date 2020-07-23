@@ -1,8 +1,9 @@
-/------Paquets necesarios para la ejecucion del programa----\
-py -m pip install PyQt5
-py -m pip install pillow
-py -m pip install pyttsx3
-py -m pip install SpeechRecognition
-py -m pip install gtts
+PyQt5==5.15.0
+pyttsx3==2.87
+SpeechRecognition==.3.8.1
+gTTS==2.1.1
+gTTS-token==1.1.3
+PyAudio==0.0.11
+pydub==0.24.0
 
 
