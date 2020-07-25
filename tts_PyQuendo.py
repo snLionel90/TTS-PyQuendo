@@ -24,7 +24,7 @@ class Window (QTabWidget): #clase ventana principal
         self.setMinimumSize(440,350) #tamaño minimo
         self.setWindowTitle('TTS, Texto to Speech PyQuendo') #texto de cabecera (titulo)
         self.addTab(TextToVoiceTab(), ' Text to Voice') #pestaña 1
-        self.addTab(VoiceToTextTab(), 'Voice To Text')
+        
 
 class TextToVoiceTab(QWidget):
     def __init__(self):
@@ -57,34 +57,6 @@ class TextToVoiceTab(QWidget):
     def salir(self):
         exit(0)
 
-class VoiceToTextTab(QWidget):
-    def __init__(self):
-        super().__init__() #llamada de la funcion anterior
-
-        boton_escucha = QPushButton('Ejecutar Tarea', self)
-        boton_escucha.setGeometry(QRect(320,35,85,27))
-        boton_escucha.clicked.connect(self.callVoiceTotext)
-
-        self.chekBox = QCheckBox('Utilizar el microfono', self)
-        self.chekBox.setGeometry(QRect(10,35,300,20))
-
-        self.textArea = QTextEdit(self)
-        self.textArea.setGeometry(QRect(15,60,390,160))
-        self.textArea.setReadOnly(True)
-
-        lbl = QLabel("PyQuendo ©Sn.Lionel90", self)
-        lbl.setGeometry(QRect(60,10,301,31))
-        lbl.setFont(FONT2)
-        lbl.setAlignment(Qt.AlignCenter)
-
-    def callVoiceTotext(self):
-        useMicro = self.chekBox.isChecked()
-
-        if not useMicro:
-            text_box = None
-
-        self.textArea.setPlainText(voiceToText(text_box))
-
 def TextToVoice(texto): #funcion de traduccion
     """"
     parametros: texto -->str
@@ -95,23 +67,6 @@ def TextToVoice(texto): #funcion de traduccion
     engine.say (texto) #que diga lo que pasemos por texto
     engine.runAndWait()
 
-def voiceToText(self):
-    """"
-    parametros: pathFile -->str
-    returns: audio convertido a string
-    """
-    MicroEnchufao = True
-    ñacañaca = ''
-    r = sr.Recognizer()
-    if MicroEnchufao:
-        with sr.Microphone() as source:
-            audio = r.listen(source)
-
-            try:
-                ñacañaca = r.recognize_google(audio)
-            except Exception:
-                ñacañaca = 'nose entienda na'
-    return f'has dicho: \n {ñacañaca}' 
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
